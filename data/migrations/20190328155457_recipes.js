@@ -3,10 +3,14 @@ exports.up = function(knex, Promise) {
     // PRIMARY KEY
     tbl.increments();
     // FIELD NAME REQUIRED
-    tbl.string("name", 128).notNullable().unique();
+    tbl
+      .string("name", 128)
+      .notNullable()
+      .unique('name');
     // FOREIGN KEY FOR DISH
     tbl
       .integer("dish_id")
+      .notNullable()
       .unsigned()
       .references("id")
       .inTable("dishes");
